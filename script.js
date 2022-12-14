@@ -28,6 +28,10 @@ function vmi() {
     // x (if not first)
         text+="x";
     }
+    // last spaces just for funsies
+    for(i=0; i<spaces; i++) {
+        text+="&nbsp;";
+    }
 
 
     // changing variables
@@ -60,13 +64,17 @@ function vmi() {
     // write
     const newNode = document.createElement("p");
     newNode.insertAdjacentHTML("beforeend", `${text}`);
-
-    // e.insertBefore(newNode, e.children[0]);
     e.appendChild(newNode);
+
+    if(e.childElementCount > screen.height/ 4 -1) {
+        e.removeChild(e.children[0]);
+    }
 
     window.scrollTo(0, document.body.scrollHeight);
 
     setTimeout(() => { vmi(); }, 10);
+
+    // Józsuf birthday jan15
 }
 
 vmi();
